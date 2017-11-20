@@ -1502,12 +1502,6 @@
       <field type="float" name="rpm1">RPM Sensor1.</field>
       <field type="float" name="rpm2">RPM Sensor2.</field>
     </message>
-    <message id="227" name="WHEEL_DISTANCE">
-      <description>Cumulative distances traveled by each wheel in meters (forward rotations increase these values, backward - decrease).</description>
-      <field type="uint32_t" name="time_boot_ms" units="ms">Timestamp (milliseconds since system boot)</field>
-      <field type="uint8_t" name="count">Number of wheels reported</field>
-      <field type="float[4]" name="distance" units="m">Distance traveled by each wheel (m)</field>
-    </message>
     <!-- ardupilot specific mavlink2 messages starting at 11000-->
     <message id="11000" name="DEVICE_OP_READ">
       <description>Read registers for a device.</description>
@@ -1606,6 +1600,13 @@
       <field type="uint16_t[4]" name="totalcurrent" units="mAh">Total current.</field>
       <field type="uint16_t[4]" name="rpm" units="rpm">RPM (eRPM).</field>
       <field type="uint16_t[4]" name="count">count of telemetry packets received (wraps at 65535).</field>
+    </message>
+    <!-- wheel traveled distance message -->
+    <message id="11020" name="WHEEL_DISTANCE">
+      <description>Cumulative distances traveled by each wheel in meters (forward rotations increase these values, backward - decrease).</description>
+      <field name="time_usec" type="uint64_t">Timestamp (microseconds, synced to UNIX time or since system boot)</field>
+      <field type="uint8_t" name="count">Number of wheels reported</field>
+      <field type="float[4]" name="distance" units="m">Distance traveled by each wheel (m)</field>
     </message>
   </messages>
 </mavlink>
